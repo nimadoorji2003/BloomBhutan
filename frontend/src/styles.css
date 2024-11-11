@@ -1,0 +1,90 @@
+/* styles.css */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.flower-panel {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.flower-panel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.flower-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 40px; /* Add padding to make space for scroll buttons */
+}
+
+.scroll-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
+}
+
+.flower-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Adjust DraggableFlower images */
+.flower-list img {
+  width: 80px;
+  margin: 5px;
+}
+
+/* Canvas styles */
+.canvas {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  border: 2px solid #ccc;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+/* FlowerTable styles */
+.flower-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+}
+
+.flower-table th, .flower-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.flower-table tr:hover {
+  background-color: #f5f5f5;
+}

@@ -1,0 +1,85 @@
+/* Full page styling */
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+/* Container for the login box */
+.login-box {
+  display: flex;
+  height: 620px;
+  width: 1000px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Login form container (60%) */
+.login-form-container {
+  width: 60%;
+  background-color: white;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Login header */
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Input container */
+.input-container {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.input-container input {
+  width: 94%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+
+/* Login button */
+.login-button {
+  background-color: #ff8f52;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-button:hover {
+  background-color: #e67740;
+}
+
+
+
+/* Login image container (40%) */
+.login-image-container {
+  width: 40%;
+  background-color: #f8f8f8;
+}
+
+.login-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

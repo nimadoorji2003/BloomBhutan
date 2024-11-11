@@ -1,0 +1,172 @@
+.product-manager-container {
+  display: flex;
+  max-height: 100%; /* Adjust this height as needed */
+
+}
+/* sidebar.css or in your global CSS file */
+.sidebar {
+  width: 250px; /* Adjust the width as needed */
+  min-width: 250px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  background-color: #ff8f52;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 3 equal columns */
+  gap: 30px;
+  flex-wrap: wrap;
+  max-height: 600px; /* Adjust this height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 10px; /* Adds padding to prevent content from being hidden by the scrollbar */
+
+}
+
+
+.product-card {
+  background-color: rgb(240, 240, 240);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #b3b3b34d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.product-card img {
+  width: 100%; /* Set your desired fixed width */
+  height: 250px; /* Set your desired fixed height */
+  object-fit: cover; /* Ensures the image covers the entire area without distortion */
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  background-color: #ff8f52;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-content label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="number"],
+.popup-content input[type="file"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: 100%; /* Makes the input fields take the full width of the container */
+  box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+}
+
+.popup-content input[type="text"]:focus,
+.popup-content input[type="number"]:focus {
+  border-color: #ff8f52;
+  outline: none;
+}
+
+.popup-content button[type="submit"] {
+  padding: 10px 16px;
+  background-color: #ff8f52;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  width: 100%; /* Makes the button take the full width */
+  margin-top: 16px;
+  margin-left: 0;
+}
+
+.popup-content button[type="submit"]:hover {
+  background-color: #ff8f52;
+}
+
+.popup-content {
+
+  text-align: left;
+}
+.popup-content p{
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.popup-content h3{
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+

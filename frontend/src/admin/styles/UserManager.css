@@ -1,0 +1,56 @@
+/* src/styles/UserManager.css */
+.user-manager-container {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.user-table {
+  width: 100%;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.popup-remove {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.popup-remove button {
+  background: white;
+  padding: 10px;
+  /* border-radius: 10px; */
+  width: 40%;
+  margin: 10px;
+  margin-top: 20px;
+  position: relative;
+  text-align: center;
+  border: 1px solid #5c5c5c5a;
+}
+
+.close{
+  margin-right: 10px;
+}

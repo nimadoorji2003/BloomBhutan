@@ -1,0 +1,83 @@
+/* src/styles/OrderHistory.css */
+
+/* Container for the entire page */
+.order-history-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Styling for the main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Heading for the page */
+.main-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Styling for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table header styling */
+table thead {
+  background-color: #f0f0f0;
+}
+
+table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table row styling */
+table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+table td {
+  padding: 12px;
+  color: #333;
+}
+
+/* Styling for the anchor links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Order status styling */
+.order-status {
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+
+  table th,
+  table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
