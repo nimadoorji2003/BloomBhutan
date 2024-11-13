@@ -7,7 +7,7 @@ import {
   FaHistory,
   FaUsers,
   FaSignOutAlt,
-  FaCaretDown  ,
+  FaCaretDown,
 } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Sidebar.css";
@@ -17,9 +17,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear any stored user session or data
-    localStorage.removeItem("user"); // Remove user data if stored
-    navigate("/admin/adminlogin"); // Navigate to the login page
+    navigate("/"); // Navigate to the login page
   };
 
   return (
@@ -29,42 +27,58 @@ const Sidebar = () => {
         <h2>Sonam Dorji</h2>
       </div>
       <ul className="menu">
-        <li className={location.pathname === "/admin/admindashboard" ? "active" : ""}>
+        <li
+          className={
+            location.pathname === "/admin/admindashboard" ? "active" : ""
+          }
+        >
           <Link to="/admin/admindashboard">
             <FaTachometerAlt className="icon" />
             Dashboard
           </Link>
         </li>
-        <li className={location.pathname === "/admin/productManager" ? "active" : ""}>
+        <li
+          className={
+            location.pathname === "/admin/productManager" ? "active" : ""
+          }
+        >
           <Link to="/admin/productManager">
             <FaBox className="icon" />
             Product Manager
           </Link>
         </li>
         <li className="order">
-  <li>
-    <Link to="">
-      <FaCaretDown   className="icon" />
-      <span>Order Manager</span> {/* Added a span for better styling control */}
-    </Link>
-  </li>
-  <ul className="ordersub">
-    <li className={location.pathname === "/admin/orderindelivery" ? "active" : ""}>
-      <Link to="/admin/orderindelivery">
-        <FaShoppingCart className="icon" />
-        <span>Order in Delivery</span>
-      </Link>
-    </li>
-    <li className={location.pathname === "/admin/orderHistory" ? "active" : ""}>
-      <Link to="/admin/orderHistory">
-        <FaHistory className="icon" />
-        <span>Order History</span>
-      </Link>
-    </li>
-  </ul>
-</li>
-
-        <li className={location.pathname === "/admin/userManager" ? "active" : ""}>
+          <Link to="#">
+            <FaCaretDown className="icon" />
+            <span>Order Manager</span>{" "}
+            {/* Added a span for better styling control */}
+          </Link>
+          <ul className="ordersub">
+            <li
+              className={
+                location.pathname === "/admin/orderindelivery" ? "active" : ""
+              }
+            >
+              <Link to="/admin/orderindelivery">
+                <FaShoppingCart className="icon" />
+                <span>Order in Delivery</span>
+              </Link>
+            </li>
+            <li
+              className={
+                location.pathname === "/admin/orderHistory" ? "active" : ""
+              }
+            >
+              <Link to="/admin/orderHistory">
+                <FaHistory className="icon" />
+                <span>Order History</span>
+              </Link>
+            </li>
+          </ul>
+        </li>
+        <li
+          className={location.pathname === "/admin/userManager" ? "active" : ""}
+        >
           <Link to="/admin/userManager">
             <FaUsers className="icon" />
             User Manager

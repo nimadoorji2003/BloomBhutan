@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  localStorage.setItem("resetEmail", email);
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (email) {
-      // Here you would add logic to send OTP to email
-      alert("OTP sent to your email");
-      navigate("/enter-otp");
+      try {
+        // Sending POST request to the backend API
+        const response = await axios.post(
+          "http://localhost:5000/api/password/forgot-password",
+          { email }
+        );
+
+        // Check if the response is successful
+        if (response.status === 200) {
+          alert(response.data.message); // Show message from the server
+          navigate("/enter-otp"); // Navigate to OTP page
+        }
+      } catch (error) {
+        // Handle error from API request
+        alert(error.response?.data?.message || "Something went wrong");
+      }
     } else {
       alert("Please enter a valid email");
     }

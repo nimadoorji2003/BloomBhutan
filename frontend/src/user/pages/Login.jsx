@@ -1,7 +1,8 @@
+// src/pages/Login.js
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../AuthContext";
 import { useNavigate, Link } from "react-router-dom";
-import loginImage from "../../assets/images/login.png"; // Ensure you have the image path correct
+import loginImage from "../../assets/images/login.png";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -10,29 +11,55 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(""); // Used to display error messages
+  const [loading, setLoading] = useState(false); // Used to show loading state
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate authentication (replace with real authentication logic)
-    if (credentials.email && credentials.password) {
-      login();
-      navigate("/"); // Redirect to home page after login
-    } else {
-      alert("Please enter valid credentials.");
+    setError(""); // Clear any existing error
+    setLoading(true); // Set loading state
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        login(data);
+
+        if (data.isAdmin) {
+          navigate("/admin/admindashboard");
+        } else {
+          navigate("/");
+        }
+      } else {
+        setError(
+          data.message || "Login failed. Please check your credentials."
+        );
+      }
+    } catch (error) {
+      setLoading(false);
+      setError("An error occurred. Please try again later.");
+      console.error("Login error:", error);
     }
   };
 
   return (
     <div className="flex justify-center items-center h-screen">
-      {/* Container */}
       <div className="flex h-[620px] w-[1000px] shadow-lg rounded-lg overflow-hidden">
-        {/* Left column: Login form (60%) */}
         <div className="w-3/5 bg-white p-12 flex flex-col justify-center">
-          {/* Back to home */}
           <div className="mb-6 flex justify-between">
             <h1 className="text-3xl font-bold mb-2">Login</h1>
             <Link to="/" className="text-orange-500 text-sm flex items-center">
@@ -41,9 +68,9 @@ const Login = () => {
           </div>
           <p className="mb-8 text-gray-600">Login and have more fun</p>
 
-          {/* Login Form */}
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+
           <form onSubmit={handleSubmit}>
-            {/* Email */}
             <div className="mb-4">
               <input
                 type="email"
@@ -56,7 +83,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Password */}
             <div className="mb-4">
               <input
                 type="password"
@@ -69,7 +95,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Remember me and Forgot Password */}
             <div className="flex justify-between items-center mb-6">
               <label className="flex items-center text-gray-600 text-sm">
                 <input type="checkbox" className="mr-2" />
@@ -80,16 +105,15 @@ const Login = () => {
               </Link>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="bg-[#ff8f52] text-white px-4 py-2 rounded font-semibold w-full"
+              disabled={loading}
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
 
-          {/* Register */}
           <p className="mt-6 text-gray-600 text-sm">
             Don't have an account?{" "}
             <Link to="/register" className="text-orange-500">
@@ -98,7 +122,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Right column: Image (40%) */}
         <div className="w-2/5">
           <img
             src={loginImage}

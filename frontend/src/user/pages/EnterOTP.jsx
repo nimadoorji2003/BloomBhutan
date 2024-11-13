@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios for API calls
 
 const EnterOTP = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // Retrieve the email stored in localStorage
+  const email = localStorage.getItem("resetEmail");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (otp) {
-      // Add logic to validate OTP
-      alert("OTP validated successfully");
-      navigate("/reset-password");
+    if (otp && email) {
+      try {
+        // Send POST request to backend to verify OTP along with email
+        const response = await axios.post(
+          "http://localhost:5000/api/password/verify-otp",
+          { otp, email } // Include both OTP and email in the request
+        );
+
+        // If OTP is verified successfully, navigate to reset password page
+        if (response.status === 200) {
+          alert(response.data.message); // Display success message from backend
+          navigate("/reset-password"); // Navigate to reset password page
+        }
+      } catch (error) {
+        // Handle any errors (e.g., invalid OTP)
+        alert(error.response?.data?.error || "Failed to verify OTP");
+      }
     } else {
       alert("Please enter the OTP");
     }
